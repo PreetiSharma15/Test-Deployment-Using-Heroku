@@ -1,6 +1,6 @@
 from flask import Flask
 import os
-import model_prediction as mp
+from model_prediction import prediction
 app = Flask(__name__)
 
 # freeport =   os.getenv('PORT')
@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def index():
-    return mp.prediction()
+    prediction_class_label = str(prediction())
+    return prediction_class_label
 
 # if __name__ == '__main__':
 #     app.run(port=freeport, host='localhost')
